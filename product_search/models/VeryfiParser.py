@@ -7,10 +7,10 @@ class VeryfiParser():
     def __init__(self,filename: str) -> None:
 
         #for authentication
-        self.client_id = 'vrfB0juUkBA4LwC5vwGrBUhwboiuwIMPRU68LTB'
-        self.client_secret = '3Dnhw0PwbAkX3gtJa3iAJHuxKGsYUU1cgAE4y6e5cjyaUsvhyjUJuJOWoaccKTPH8jxyiVSTh7JkrPefMlz3Ac70u0oY3POTRyozlCbaNSAydG6ZN1UU2G7wHtwNkWzc'
-        self.username = 'marlycef4'
-        self.api_key = '98e6a79ff2bd95c85d82b5d2c2229ef6'
+        self.client_id = 'vrfeo1g7YYMTyc8NP8Fs3JMpZVBS0CWcdkJKMCi'
+        self.client_secret = 'HdhxdfERzRXZAG3Uc9iMXespB8gXHsCK5O4DAhdDadHBWcMzzZUcwPfoYYTnVw77bbNkVMyPywMYxo7oI1RE9FuG6C958kDx8IExoO1eS2Dz2P3MIKHFBADmgwWm6hRo'
+        self.username = 'ecoscannerv'
+        self.api_key = '3d70f8f9ce36e30d160ca64c57584c04'
 
         #to be sent to the veryfiAPI
         self.categories = ['Grocery', 'Utilities', 'Travel']
