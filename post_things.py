@@ -1,7 +1,7 @@
 import requests
 
 
-with open("DSC_0058.JPG",'rb') as f:
+with open("Images/DSC_0058.JPG",'rb') as f:
     image = f.read()
 file = {"file":image}
 print(file)

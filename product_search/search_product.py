@@ -6,10 +6,10 @@ def search_product(input_product : Product):
     link,imlink = get_product_link(input_product)
 
     #print('here')
-    print(link)
+    #print(link)
     #print(imlink)
     #input_product.populate_product_using_link(link)
-    return input_product,link
+    return [(input_product,link)]
 
 
 

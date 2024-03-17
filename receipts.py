@@ -158,35 +158,94 @@ def get_product_details(sainsbury_url):
     except Exception as e:
         return {"error": str(e)}
 
-filename = 'DSC_0058.jpg'
+"""
+def get_latest_image(folder_path):
+    try:
+        # Get a list of all files in the folder
+        all_files = os.listdir(folder_path)
+
+        # Filter out non-image files (e.g., .jpg, .jpeg, .png)
+        image_files = [file for file in all_files if file.lower().endswith(('.jpg', '.jpeg', '.png'))]
+
+        if not image_files:
+            raise ValueError("No image files found in the specified folder.")
+
+        # Get the latest image file based on creation time
+        latest_image = max(image_files, key=os.path.getctime)
+
+        return latest_image
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+
+# Example usage
+folder_path = 'C:\\Uni\\Yr 1\\Lent\\Hackathon\\SainsburysReceiptsVechain\\Images'  # Specify the correct path
+latest_image_name = get_latest_image(folder_path)
+
+if latest_image_name:
+    print(f"The most recent image file is: {latest_image_name}")
+else:
+    print("No valid image files found in the folder.")"""
+
+#only need to input the name of the image into here!!!!!! it goes Images/xxxxxxx.jpg or whatever
+filename = 'Images/IMG_0835.jpeg'
 parser = VerifyParser(filename)
 items = parser.get_line_items()
 
 #print(items)
 
-items = [(product, price) for product, price in items if price >= 0]
+items = [(product, price) for product, price in items if isinstance(price, (int, float)) and price >= 0]
 
+itemsholder=[]
 for i in range(len(items)):
-    outputitem,link=(search_product(items[i]))  
-    #print(link)
-    print(get_product_details(link))
+    itemsholder.append(search_product(items[i]))  
+
+   
+combined_list = [(item[0][0][0], item[0][0][1],item[0][1]) for item in itemsholder]
+
+print(combined_list) 
+print('end')
+
+#dictionary
+#[('MONSTER PIPELINE', 1.85, 'https://www.sainsburys.co.uk/gol-ui/product/monster-energy-pipeline-punch-500ml'), ('BRIE, BACON & CHILLI', 3.0, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-brie-bacon-chilli-chutney-sandwich'), ('PIZZA SWIRL', 1.1, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-cheese---onion-pizza')]
+#[('IRN BRU 1L', 1.1, 'https://www.sainsburys.co.uk/shop/gb/groceries/irn-bru-1l'), ('LINDT INTENSE ORANG', 1.6, 'https://www.sainsburys.co.uk/gol-ui/product/lindt-excellence-intense-orange-100g'), ('LINDT INTENSE ORANG', 1.6, 'https://www.sainsburys.co.uk/gol-ui/product/lindt-excellence-intense-orange-100g'), ('CARROTS LOOSE', 0.07, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-carrots-loose')]
+#(There is an error with one of the items as it its cant like find a result for it or smth)
+#[('HERBAL ESSENCES', 2.0, 'https://www.sainsburys.co.uk/shop/gb/groceries/health-beauty/herbal-essences'), ('JS 8 BRIOCHE ROLLS', 1.5, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-milk-chocolate-chip-brioche-roll-x8'), ('SSTC HW ANTIBC SILK', 0.6, 'https://www.sainsburys.co.uk/gol-ui/product/ecover-laundry-liquid--delicate-750ml')]
+#[('EMMI MR.BIG 370ML', 2.65, 'https://www.sainsburys.co.uk/gol-ui/product/emmi-mr-big-skinny-caff%C3%A8-latte-370ml'), ('NAKD BB MUFF B/BAR', 1.35, 'https://www.sainsburys.co.uk/gol-ui/product/n-kd-big-bar-blueberry-muffin-45g'), ('ALL DAY BREAKFAST SW', 2.75, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-all-day-breakfast-sandwich')]
+#(outputs the link to the search result on sainsbury not a specific product but that isnt really much of an issue)
+#[('STARBUCKS G CAFFE LA', 2.8, 'https://www.sainsburys.co.uk/gol-ui/product/starbucks-seattle-latte-220ml'), ('ALL DAY BREAKFAST SW', 2.75, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-all-day-breakfast-sandwich'), ('JS 2X MIN CURED PIES', 1.3, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-mini-pork-pies-x2-100g')]
+#[('ALL DAY BREAKFAST SW', 2.75, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-all-day-breakfast-sandwich'), ('JS SCOTCH EGG', 1.3, 'https://www.sainsburys.co.uk/gol-ui/groceries/dairy-eggs-and-chilled/savoury-snacks/scotch-eggs/c:1019159'), ('COSTA REG VNL LATTE', 3.5, 'https://www.sainsburys.co.uk/gol-ui/product/costa-coffee-latte-250ml')]
+#(Again didnt search specifically)
+#[('JS STONEBAKED BBQ CH', 3.5, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-stonebaked-bbq-chicken-hand-stretched-pizza-300g'), ('JS SB MEAT FEAST', 3.5, 'https://www.sainsburys.co.uk/gol-ui/product/sainsburys-stonebaked-meat-feast-306g')]
+
+
+
+
+
+
+
+
+
+
+
+    #print(get_product_details(link))
     #product_details = get_product_details(link)
 
 
 
 
 
-    """url = link
-    apikey = '3b43e9a3046235f3ec0c8965c2365a6e8a995f1a'
-    params = {
+"""url = link
+apikey = '3b43e9a3046235f3ec0c8965c2365a6e8a995f1a'
+params = {
         'url': url,
         'apikey': apikey,
         'js_render': 'true',
         'premium_proxy': 'true',
         'proxy_country': 'gb',
-    }
-    response = requests.get('https://api.zenrows.com/v1/', params=params)
-    print(response.text)"""
+}
+response = requests.get('https://api.zenrows.com/v1/', params=params)
+print(response.text)"""
         
 
 
